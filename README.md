@@ -41,9 +41,9 @@ Evidence families:
 ```mermaid
 flowchart TD
     A[Claim Received] --> B{Policy Active?}
-    B -- "No" --> R1[Red Tier: 0% payout\nAction: Reject (ineligible policy)]
+    B -- "No" --> R1[Red Tier: 0% payout<br/>Action: Reject - ineligible policy]
     B -- "Yes" --> C{Severe Event in Claimed Zone?}
-    C -- "No" --> R2[Red Tier: 0% payout\nAction: Reject (no trigger event)]
+    C -- "No" --> R2[Red Tier: 0% payout<br/>Action: Reject - no trigger event]
     C -- "Yes" --> D{Device Integrity Score >= 0.70?}
     D -- "No" --> E{Degraded Telemetry Triggered?}
     D -- "Yes" --> F{Spatiotemporal Plausibility Score >= 0.65?}
@@ -51,12 +51,12 @@ flowchart TD
     F -- "Yes" --> G{Cross-Signal Corroboration Score >= 0.60?}
     G -- "No" --> E
     G -- "Yes" --> H{Inherited Ring Risk < 0.40?}
-    H -- "Yes" --> G1[Green Tier: 100% payout\nAction: Auto-pay]
+    H -- "Yes" --> G1[Green Tier: 100% payout<br/>Action: Auto-pay]
     H -- "No (>= 0.40)" --> I{Inherited Ring Risk >= 0.60?}
-    I -- "Yes" --> R3[Red Tier: 0% payout\nAction: Hold + expedited review]
-    I -- "No (0.40 to 0.59)" --> A1[Amber Tier: 40% payout\nAction: Provisional + async review]
-    E -- "No" --> R4[Red Tier: 0% payout\nAction: Hold for evidence]
-    E -- "Yes" --> A2[Amber-Degraded Tier: 40% payout\nAction: Provisional + 6h evidence window]
+    I -- "Yes" --> R3[Red Tier: 0% payout<br/>Action: Hold + expedited review]
+    I -- "No (0.40 to 0.59)" --> A1[Amber Tier: 40% payout<br/>Action: Provisional + async review]
+    E -- "No" --> R4[Red Tier: 0% payout<br/>Action: Hold for evidence]
+    E -- "Yes" --> A2[Amber-Degraded Tier: 40% payout<br/>Action: Provisional + 6h evidence window]
 ```
 
 ### 2) Data Beyond GPS for Coordinated Fraud Ring Detection
